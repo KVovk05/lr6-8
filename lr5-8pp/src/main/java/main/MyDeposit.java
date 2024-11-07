@@ -4,14 +4,20 @@ import java.util.ArrayList;
 public class MyDeposit extends Deposit {
 
     private int myPeriod;
-    private int myInvestment;
-    public MyDeposit(String name, double interestRate, int minPeriod, int maxPeriod, int maxInvest, int minInvest, int myPeriod, int myInvestment) {
-        super(name, interestRate, minPeriod, maxPeriod, maxInvest, minInvest);
-        this.myPeriod = myPeriod;
-        this.myInvestment = myInvestment;
+    private double myInvestment = 0;
+
+    public MyDeposit() {
+
+    }
+    public MyDeposit(Deposit deposit){
+        this.setMinPeriod(deposit.getMinPeriod());
+        this.setMaxPeriod(deposit.getMaxPeriod());
+        this.setInterestRate(deposit.getInterestRate());
+        this.setBankId(deposit.getBankId());
     }
 
-    public MyDeposit(int myPeriod, int myInvestment) {
+    public MyDeposit(int bankId, int minPeriod, int maxPeriod, double interestRate, int myPeriod, double myInvestment) {
+        super(bankId, minPeriod, maxPeriod, interestRate);
         this.myPeriod = myPeriod;
         this.myInvestment = myInvestment;
     }
@@ -24,11 +30,18 @@ public class MyDeposit extends Deposit {
         this.myPeriod = myPeriod;
     }
 
-    public int getMyInvestment() {
+    public double getMyInvestment() {
         return myInvestment;
     }
 
-    public void setMyInvestment(int myInvestment) {
+    public void setMyInvestment(double myInvestment) {
         this.myInvestment = myInvestment;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+
+                "\nmy Period:" + myPeriod +
+                "\nmy Investment:" + myInvestment;
     }
 }

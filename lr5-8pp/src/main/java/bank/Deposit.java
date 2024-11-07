@@ -1,26 +1,20 @@
 package bank;
 
-public class Deposit extends Bank {
-private double interestRate;
+public class Deposit  {
+    private int bankId;
 private int minPeriod;
 private int maxPeriod;
-private int maxInvest;
+    private double interestRate;
 
-
-
-    private int minInvest;
-private double moneyInDeposit;
-
-    public Deposit(String name, double interestRate, int minPeriod, int maxPeriod, int maxInvest, int minInvest) {
-        super(name);
-        this.interestRate = interestRate;
-        this.minPeriod = minPeriod;
-        this.maxPeriod = maxPeriod;
-        this.maxInvest = maxInvest;
-        this.minInvest = minInvest;
-    }
     public Deposit(){
 
+    }
+
+    public Deposit(int bankId, int minPeriod, int maxPeriod, double interestRate) {
+        this.bankId = bankId;
+        this.minPeriod = minPeriod;
+        this.maxPeriod = maxPeriod;
+        this.interestRate = interestRate;
     }
 
     public double getInterestRate() {
@@ -29,6 +23,22 @@ private double moneyInDeposit;
 
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nDeposit\n" +
+                "bankId: " + bankId +
+                "\nminimal Period: " + minPeriod +
+                "\nmaximal period: " + maxPeriod +
+                "\ninterest rate: " + interestRate*100;
+    }
+    public int getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(int bankId) {
+        this.bankId = bankId;
     }
 
     public int getMinPeriod() {
@@ -45,36 +55,5 @@ private double moneyInDeposit;
 
     public void setMaxPeriod(int maxPeriod) {
         this.maxPeriod = maxPeriod;
-    }
-    public void setMoneyInDeposit(double moneyInDeposit) {
-        this.moneyInDeposit = moneyInDeposit;
-    }
-
-    public int getMaxInvest() {
-        return maxInvest;
-    }
-
-    public void setMaxInvest(int maxInvest) {
-        this.maxInvest = maxInvest;
-    }
-
-    public int getMinInvest() {
-        return minInvest;
-    }
-
-    public void setMinInvest(int minInvest) {
-        this.minInvest = minInvest;
-    }
-    public double getMoneyInDeposit() {
-        return moneyInDeposit;
-    }
-    @Override
-    public String toString() {
-        return "\n\nBank: " +getName()+
-                "\ninterestRate=" + interestRate +
-                "\nminPeriod=" + minPeriod +
-                "\nmaxPeriod=" + maxPeriod +
-                "\nmaxInvest=" + maxInvest +
-                "\nminInvest=" + minInvest ;
     }
 }
