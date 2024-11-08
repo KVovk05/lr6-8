@@ -1,5 +1,3 @@
-package main;
-
 import menu.ConsoleMenu;
 
 public class Main {

@@ -1,6 +1,5 @@
 package main;
 import bank.Deposit;
-import java.util.ArrayList;
 public class MyDeposit extends Deposit {
 
     private int myPeriod;
