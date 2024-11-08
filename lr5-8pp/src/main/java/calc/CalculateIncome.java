@@ -50,10 +50,6 @@ public class CalculateIncome {
     public double getMonthlyAdd() {
         return monthlyAdd;
     }
-
-
-
-
     public void setMonthlyAdd(double monthlyAdd) {
         this.monthlyAdd = monthlyAdd;
     }
