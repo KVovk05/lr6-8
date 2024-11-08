@@ -6,9 +6,6 @@ public class MyDeposit extends Deposit {
     private int myPeriod;
     private double myInvestment = 0;
 
-    public MyDeposit() {
-
-    }
     public MyDeposit(Deposit deposit){
         this.setMinPeriod(deposit.getMinPeriod());
         this.setMaxPeriod(deposit.getMaxPeriod());

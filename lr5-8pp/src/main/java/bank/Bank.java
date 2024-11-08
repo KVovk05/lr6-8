@@ -1,5 +1,7 @@
 package bank;
+
 import java.util.ArrayList;
+
 public class Bank {
     private String name;
     private int bankId;
@@ -10,9 +12,10 @@ public class Bank {
 
     }
 
-    public Bank(){
+    public Bank() {
 
     }
+
     public String getName() {
         return name;
     }
@@ -24,9 +27,6 @@ public class Bank {
     public int getBankId() {
         return bankId;
     }
-
-
-
 
 
     public void setBankId(int bankId) {

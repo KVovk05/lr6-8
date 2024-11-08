@@ -1,12 +1,12 @@
 package bank;
 
-public class Deposit  {
+public class Deposit {
     private int bankId;
-private int minPeriod;
-private int maxPeriod;
+    private int minPeriod;
+    private int maxPeriod;
     private double interestRate;
 
-    public Deposit(){
+    public Deposit() {
 
     }
 
@@ -31,8 +31,9 @@ private int maxPeriod;
                 "bankId: " + bankId +
                 "\nminimal Period: " + minPeriod +
                 "\nmaximal period: " + maxPeriod +
-                "\ninterest rate: " + interestRate*100;
+                "\ninterest rate: " + interestRate * 100;
     }
+
     public int getBankId() {
         return bankId;
     }

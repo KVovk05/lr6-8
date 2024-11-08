@@ -5,25 +5,53 @@ import main.MyDeposit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-public class Invoker {
-    private Map <String,Command> commandMap = new HashMap<>();
+import java.util.Scanner;
 
-    public Invoker() {
-
-    }
+public class Invoker implements Command {
+    protected Map <String,Command> commandMap = new HashMap<>();
 
     public void addComands(ArrayList<Deposit> deposits, ArrayList<MyDeposit> myDeposits,ArrayList<Bank> banks){
-        commandMap.put("Show list of available deposits",new ShowDepositList(deposits));
-        commandMap.put("Add deposit",new ChooseDesiredDeposit(deposits,myDeposits));
-        commandMap.put("Replenish my deposit",new Replenishment(myDeposits));
-        commandMap.put("Withdraw money",new WithdrawMoney(myDeposits));
-        commandMap.put("Show my deposit", new ShowMyDeposit(myDeposits));
-        commandMap.put("Calculate income", new CalculateIncome());
-        commandMap.put("Find bank by ID", new FindBankById());
-        commandMap.put("Delete my Deposit", new DeleteMyDeposit(myDeposits));
+        SubMenu subMenu = new SubMenu();
+        subMenu.addComands(deposits, myDeposits, banks);
+        commandMap.put("show_list",new ShowDepositList(deposits));
+        commandMap.put("add",new ChooseDesiredDeposit(deposits,myDeposits));
+        commandMap.put("replenish",new Replenishment(myDeposits));
+        commandMap.put("withdraw",new WithdrawMoney(myDeposits));
+        commandMap.put("show_dep", new ShowMyDeposit(myDeposits));
+        commandMap.put("calculate", new CalculateIncome());
+        commandMap.put("find_bank", new FindBankById());
+        commandMap.put("delete", new DeleteMyDeposit(myDeposits));
+        commandMap.put("sub_menu", subMenu);
 
     }
     public Command getCommand(String commandName) {
         return commandMap.get(commandName);
+    }
+
+    public void printMenu(){
+        System.out.println("\nMENU");
+        for (var element : commandMap.entrySet()){
+            System.out.println(element.getKey() + " : " + element.getValue().getDesc());
+        }
+        System.out.println("exit: Exit");
+    }
+
+    @Override
+    public void execute() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            printMenu();
+            String choose = sc.nextLine();
+            if (choose.equals("exit"))
+                break;
+
+            Command command = getCommand(choose);
+            command.execute();
+        }
+    }
+
+    @Override
+    public String getDesc() {
+        return "Menu";
     }
 }
