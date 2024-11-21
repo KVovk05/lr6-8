@@ -2,7 +2,7 @@ package menu;
 
 import bank.Bank;
 import bank.Deposit;
-import main.MyDeposit;
+import bank.MyDeposit;
 
 import java.util.*;
 
@@ -13,8 +13,6 @@ public interface Command {
 
 class WithdrawMoney implements Command {
     private ArrayList<MyDeposit> myDeposits;
-    double amount;
-
     public WithdrawMoney(ArrayList<MyDeposit> myDeposits) {
         this.myDeposits = myDeposits;
     }
@@ -194,6 +192,62 @@ class CalculateIncome implements Command {
         System.out.println("Your investment after: " + periodMonths + "months: " + moneyAfterPeriod + "\nTotal income:" + (moneyAfterPeriod - moneyBeforePeriod));
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getPeriodMonths() {
+        return periodMonths;
+    }
+
+    public void setPeriodMonths(int periodMonths) {
+        this.periodMonths = periodMonths;
+    }
+
+    public double getYears() {
+        return years;
+    }
+
+    public void setYears(double years) {
+        this.years = years;
+    }
+
+    public int getMonthsInYear() {
+        return monthsInYear;
+    }
+
+    public void setMonthsInYear(int monthsInYear) {
+        this.monthsInYear = monthsInYear;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public double getMoneyAfterPeriod() {
+        return moneyAfterPeriod;
+    }
+
+    public void setMoneyAfterPeriod(double moneyAfterPeriod) {
+        this.moneyAfterPeriod = moneyAfterPeriod;
+    }
+
+    public double getReplenishment() {
+        return replenishment;
+    }
+
+    public void setReplenishment(double replenishment) {
+        this.replenishment = replenishment;
+    }
+
     public void calculateWithAdd() {
         moneyAfterPeriod = money * Math.pow((1 + interestRate / monthsInYear), monthsInYear * years);
         moneyAfterPeriod += replenishment * ((Math.pow((1 + interestRate / monthsInYear), monthsInYear * years) - 1) / (interestRate / monthsInYear));
@@ -229,6 +283,10 @@ class FindBankById implements Command {
     public String getDesc(){
         return "Find bank by ID";
     }
+
+    public Map<Integer, Bank> getMap() {
+        return map;
+    }
 }
 
 class ShowMyDeposit implements Command {
@@ -246,7 +304,9 @@ class ShowMyDeposit implements Command {
     public String getDesc(){
         return "Show my deposit";
     }
+
 }
+
 
 class DeleteMyDeposit implements Command {
     private ArrayList<MyDeposit> myDeposits;

@@ -1,6 +1,6 @@
 package bank;
 
-import java.util.ArrayList;
+
 
 public class Bank {
     private String name;
@@ -12,9 +12,6 @@ public class Bank {
 
     }
 
-    public Bank() {
-
-    }
 
     public String getName() {
         return name;

@@ -1,4 +1,4 @@
-package main;
+package bank;
 import bank.Deposit;
 public class MyDeposit extends Deposit {
 

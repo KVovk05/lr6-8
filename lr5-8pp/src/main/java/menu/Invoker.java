@@ -1,7 +1,6 @@
 package menu;
 import bank.Deposit;
-import bank.Bank;
-import main.MyDeposit;
+import bank.MyDeposit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,9 +9,7 @@ import java.util.Scanner;
 public class Invoker implements Command {
     protected Map <String,Command> commandMap = new HashMap<>();
 
-    public void addComands(ArrayList<Deposit> deposits, ArrayList<MyDeposit> myDeposits,ArrayList<Bank> banks){
-        SubMenu subMenu = new SubMenu();
-        subMenu.addComands(deposits, myDeposits, banks);
+    public void addComands(ArrayList<Deposit> deposits, ArrayList<MyDeposit> myDeposits){
         commandMap.put("show_list",new ShowDepositList(deposits));
         commandMap.put("add",new ChooseDesiredDeposit(deposits,myDeposits));
         commandMap.put("replenish",new Replenishment(myDeposits));
@@ -21,7 +18,7 @@ public class Invoker implements Command {
         commandMap.put("calculate", new CalculateIncome());
         commandMap.put("find_bank", new FindBankById());
         commandMap.put("delete", new DeleteMyDeposit(myDeposits));
-        commandMap.put("sub_menu", subMenu);
+
 
     }
     public Command getCommand(String commandName) {

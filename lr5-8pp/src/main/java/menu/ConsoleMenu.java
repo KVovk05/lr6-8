@@ -1,13 +1,10 @@
 package menu;
-
-import bank.Bank;
 import bank.Deposit;
-import main.MyDeposit;
+import bank.MyDeposit;
 
 import java.util.ArrayList;
 
 public class ConsoleMenu {
-    private ArrayList<Bank> bankList = new ArrayList<>(10);
     private ArrayList<Deposit> deposits = new ArrayList<>(10);
     private ArrayList<MyDeposit> myDeposits = new ArrayList<>(3);
 
@@ -15,7 +12,7 @@ public class ConsoleMenu {
         addDeposits(deposits);
 
         Invoker invoker = new Invoker();
-        invoker.addComands(deposits, myDeposits, bankList);
+        invoker.addComands(deposits, myDeposits);
         invoker.execute();
     }
 
